@@ -21,8 +21,9 @@
 // 3. This notice may not be removed or altered from any source
 // distribution.
 
+#nullable enable
+
 using System;
-using System.Runtime.Serialization;
 
 namespace Foxtamp.IceMilkTea.ServiceManager
 {
@@ -31,33 +32,74 @@ namespace Foxtamp.IceMilkTea.ServiceManager
     /// </summary>
     public class ServiceNotFoundException : Exception
     {
-        private readonly string _message;
+        private string? _message;
 
-        public override string Message => _message;
-
+        /// <summary>
+        /// 見つけられなかったサービスの型
+        /// </summary>
         public Type? ServiceType { get; }
+
+        /// <summary>
+        /// 例外メッセージ
+        /// </summary>
+        public override string Message
+        {
+            get
+            {
+                if (_message == null)
+                {
+                    SetMessage();
+                }
+
+                return _message!;
+            }
+        }
 
         public ServiceNotFoundException()
         {
+            _message = null;
             ServiceType = null;
         }
 
-        public ServiceNotFoundException(string message) : base(message)
+        public ServiceNotFoundException(string? message) : base(message)
         {
+            _message = message;
+            ServiceType = null;
         }
 
-        public ServiceNotFoundException(string message, Exception innerException) : base(message, innerException)
+        public ServiceNotFoundException(string? message, Exception innerException) : base(message, innerException)
         {
+            _message = message;
+            ServiceType = null;
         }
 
-        public ServiceNotFoundException(string message, Type serviceType) : base(message)
+        public ServiceNotFoundException(Type serviceType)
         {
+            _message = null;
             ServiceType = serviceType;
         }
 
-        public ServiceNotFoundException(string message, Type serviceType, Exception innerException) : base(message, innerException)
+        public ServiceNotFoundException(string? message, Type serviceType) : base(message)
         {
+            _message = message;
             ServiceType = serviceType;
+        }
+
+        public ServiceNotFoundException(string? message, Type serviceType, Exception innerException) : base(message, innerException)
+        {
+            _message = message;
+            ServiceType = serviceType;
+        }
+
+        private void SetMessage()
+        {
+            if (ServiceType != null)
+            {
+                _message = $"サービス'{ServiceType.FullName}'が見つかりませんでした。";
+                return;
+            }
+
+            _message = "サービスが見つかりませんでした。";
         }
     }
 }

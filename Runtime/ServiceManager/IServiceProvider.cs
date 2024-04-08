@@ -21,6 +21,8 @@
 // 3. This notice may not be removed or altered from any source
 // distribution.
 
+#nullable enable
+
 using System;
 
 namespace Foxtamp.IceMilkTea.ServiceManager
@@ -30,17 +32,12 @@ namespace Foxtamp.IceMilkTea.ServiceManager
     /// </summary>
     public interface IServiceProvider
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="TService"></typeparam>
-        /// <returns></returns>
         TService GetService<TService>();
 
         object GetService(Type serviceType);
 
-        bool TryGetService<TService>(out TService service);
+        bool TryGetService<TService>(out TService? service);
 
-        bool TryGetService(Type serviceType, out object service);
+        bool TryGetService(Type serviceType, out object? service);
     }
 }
