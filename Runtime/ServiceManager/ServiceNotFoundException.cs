@@ -32,12 +32,12 @@ namespace Foxtamp.IceMilkTea.ServiceManager
     /// </summary>
     public class ServiceNotFoundException : Exception
     {
-        private string? _message;
+        private string? _message = null;
 
         /// <summary>
         /// 見つけられなかったサービスの型
         /// </summary>
-        public Type? ServiceType { get; }
+        public Type? ServiceType { get; } = null;
 
         /// <summary>
         /// 例外メッセージ
@@ -55,36 +55,58 @@ namespace Foxtamp.IceMilkTea.ServiceManager
             }
         }
 
+        /// <summary>
+        /// ServiceNotFoundException のインスタンスを初期化します
+        /// </summary>
         public ServiceNotFoundException()
         {
-            _message = null;
-            ServiceType = null;
         }
 
+        /// <summary>
+        /// ServiceNotFoundException のインスタンスを初期化します
+        /// </summary>
+        /// <param name="message">例外として表示するメッセージ null の場合は、内部既定メッセージが使用されます</param>
         public ServiceNotFoundException(string? message) : base(message)
         {
             _message = message;
-            ServiceType = null;
         }
 
+        /// <summary>
+        /// ServiceNotFoundException のインスタンスを初期化します
+        /// </summary>
+        /// <param name="message">例外として表示するメッセージ null の場合は、内部既定メッセージが使用されます</param>
+        /// <param name="innerException">この例外の原因となった例外</param>
         public ServiceNotFoundException(string? message, Exception innerException) : base(message, innerException)
         {
             _message = message;
-            ServiceType = null;
         }
 
+        /// <summary>
+        /// ServiceNotFoundException のインスタンスを初期化します
+        /// </summary>
+        /// <param name="serviceType">見つけられなかったサービスの型</param>
         public ServiceNotFoundException(Type serviceType)
         {
-            _message = null;
             ServiceType = serviceType;
         }
 
+        /// <summary>
+        /// ServiceNotFoundException のインスタンスを初期化します
+        /// </summary>
+        /// <param name="message">例外として表示するメッセージ null の場合は、内部既定メッセージが使用されます</param>
+        /// <param name="serviceType">見つけられなかったサービスの型</param>
         public ServiceNotFoundException(string? message, Type serviceType) : base(message)
         {
             _message = message;
             ServiceType = serviceType;
         }
 
+        /// <summary>
+        /// ServiceNotFoundException のインスタンスを初期化します
+        /// </summary>
+        /// <param name="message">例外として表示するメッセージ null の場合は、内部既定メッセージが使用されます</param>
+        /// <param name="serviceType">見つけられなかったサービスの型</param>
+        /// <param name="innerException">この例外の原因となった例外</param>
         public ServiceNotFoundException(string? message, Type serviceType, Exception innerException) : base(message, innerException)
         {
             _message = message;

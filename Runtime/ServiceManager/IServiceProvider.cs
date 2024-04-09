@@ -32,12 +32,30 @@ namespace Foxtamp.IceMilkTea.ServiceManager
     /// </summary>
     public interface IServiceProvider
     {
-        TService GetService<TService>();
+        /// <summary>
+        /// 指定された型とサービスキーからサービスのインスタンスを取得します
+        /// </summary>
+        /// <typeparam name="TService">取得するサービスの型</typeparam>
+        /// <param name="serviceKey">取得するサービスのキー。型のみの場合は null を指定出来ます。</param>
+        /// <returns>指定された型のサービスを返します</returns>
+        /// <exception cref="ServiceNotFoundException">サービスを見つけられませんでした。</exception>
+        TService GetService<TService>(long? serviceKey = null);
 
-        object GetService(Type serviceType);
+        /// <summary>
+        /// 指定された型とサービスキーからサービスのインスタンスを取得します
+        /// </summary>
+        /// <param name="serviceType">取得するサービスの型</param>
+        /// <param name="serviceKey">取得するサービスのキー。型のみの場合は null を指定出来ます。</param>
+        /// <returns>指定された型のサービスを返します</returns>
+        /// <exception cref="ServiceNotFoundException">サービスを見つけられませんでした。</exception>
+        object GetService(Type serviceType, long? serviceKey = null);
 
-        bool TryGetService<TService>(out TService? service);
+        bool TryGetService<TService>(out TService? service, long? serviceKey = null);
 
-        bool TryGetService(Type serviceType, out object? service);
+        bool TryGetService(Type serviceType, out object? service, long? serviceKey = null);
+
+        bool Exists<TService>(long? serviceKey = null);
+
+        bool Exists(Type serviceType, long? serviceKey = null);
     }
 }
