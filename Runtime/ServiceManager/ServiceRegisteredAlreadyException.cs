@@ -26,57 +26,57 @@ using System;
 namespace Foxtamp.IceMilkTea.ServiceManager
 {
     /// <summary>
-    /// サービスを見つけられなかった場合の例外です
+    /// サービスが既に登録済みの場合の例外です
     /// </summary>
-    public class ServiceNotFoundException : Exception
+    public class ServiceRegisteredAlreadyException : Exception
     {
         /// <summary>
-        /// 見つけられなかったサービスの型
+        /// 登録済みのサービスの型
         /// </summary>
         public Type ServiceType { get; }
 
 
         /// <summary>
-        /// ServiceNotFoundException のインスタンスを初期化します
+        /// ServiceRegisteredAlreadyException のインスタンスを初期化します
         /// </summary>
-        public ServiceNotFoundException()
+        public ServiceRegisteredAlreadyException()
         {
         }
 
         /// <summary>
-        /// ServiceNotFoundException のインスタンスを初期化します
+        /// ServiceRegisteredAlreadyException のインスタンスを初期化します
         /// </summary>
         /// <param name="message">例外として表示するメッセージ</param>
-        public ServiceNotFoundException(string message) : base(message)
+        public ServiceRegisteredAlreadyException(string message) : base(message)
         {
         }
 
         /// <summary>
-        /// ServiceNotFoundException のインスタンスを初期化します
+        /// ServiceRegisteredAlreadyException のインスタンスを初期化します
         /// </summary>
         /// <param name="message">例外として表示するメッセージ</param>
         /// <param name="innerException">この例外の原因となった例外</param>
-        public ServiceNotFoundException(string message, Exception innerException) : base(message, innerException)
+        public ServiceRegisteredAlreadyException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
         /// <summary>
-        /// ServiceNotFoundException のインスタンスを初期化します
+        /// ServiceRegisteredAlreadyException のインスタンスを初期化します
         /// </summary>
         /// <param name="message">例外として表示するメッセージ</param>
-        /// <param name="serviceType">見つけられなかったサービスの型</param>
-        public ServiceNotFoundException(string message, Type serviceType) : base(message)
+        /// <param name="serviceType">登録済みのサービスの型</param>
+        public ServiceRegisteredAlreadyException(string message, Type serviceType) : base(message)
         {
             ServiceType = serviceType;
         }
 
         /// <summary>
-        /// ServiceNotFoundException のインスタンスを初期化します
+        /// ServiceRegisteredAlreadyException のインスタンスを初期化します
         /// </summary>
         /// <param name="message">例外として表示するメッセージ</param>
-        /// <param name="serviceType">見つけられなかったサービスの型</param>
+        /// <param name="serviceType">登録済みのサービスの型</param>
         /// <param name="innerException">この例外の原因となった例外</param>
-        public ServiceNotFoundException(string message, Type serviceType, Exception innerException) : base(message, innerException)
+        public ServiceRegisteredAlreadyException(string message, Type serviceType, Exception innerException) : base(message, innerException)
         {
             ServiceType = serviceType;
         }

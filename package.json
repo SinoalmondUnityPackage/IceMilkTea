@@ -6,5 +6,8 @@
   "unity": "2022.3",
   "category": "GameFramework",
   "author": "Sinoa <sinoans@gmail.com> (https://github.com/Sinoa/IceMilkTea)",
-  "license": "Zlib"
+  "license": "Zlib",
+  "dependencies": {
+    "com.unity.test-framework": ""
+  }
 }

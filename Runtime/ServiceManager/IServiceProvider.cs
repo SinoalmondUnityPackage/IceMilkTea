@@ -21,39 +21,37 @@
 // 3. This notice may not be removed or altered from any source
 // distribution.
 
-using System;
-
 namespace Foxtamp.IceMilkTea.ServiceManager
 {
     /// <summary>
-    /// サービスのインスタンスを取得する機能を提供します
+    /// サービスのインスタンスを取得する機能を提供するインターフェイスです
     /// </summary>
     public interface IServiceProvider
     {
         /// <summary>
-        /// 指定された型とサービスキーからサービスのインスタンスを取得します
+        /// 指定されたサービスのインスタンスを取得します
         /// </summary>
         /// <typeparam name="TService">取得するサービスの型</typeparam>
-        /// <param name="serviceKey">取得するサービスのキー。型のみの場合は null を指定出来ます。</param>
-        /// <returns>指定された型のサービスを返します</returns>
-        /// <exception cref="ServiceNotFoundException">サービスを見つけられませんでした。</exception>
-        TService GetService<TService>(long? serviceKey = null);
+        /// <returns>指定された型のサービスのインスタンスを返します</returns>
+        /// <exception cref="ServiceNotFoundException">サービス'TService'を見つかりませんでした。</exception>
+        TService GetService<TService>()
+            where TService : class;
 
         /// <summary>
-        /// 指定された型とサービスキーからサービスのインスタンスを取得します
+        /// 指定されたサービスのインスタンスを取得します
         /// </summary>
-        /// <param name="serviceType">取得するサービスの型</param>
-        /// <param name="serviceKey">取得するサービスのキー。型のみの場合は null を指定出来ます。</param>
-        /// <returns>指定された型のサービスを返します</returns>
-        /// <exception cref="ServiceNotFoundException">サービスを見つけられませんでした。</exception>
-        object GetService(Type serviceType, long? serviceKey = null);
+        /// <typeparam name="TService">取得するサービスの型</typeparam>
+        /// <param name="service">サービスを取得できた場合はインスタンスの参照を、取得できなかった場合は null が設定されます</param>
+        /// <returns>サービスの取得に成功した場合は true を、失敗した場合は false を返します</returns>
+        bool TryGetService<TService>(out TService service)
+            where TService : class;
 
-        bool TryGetService<TService>(out TService? service, long? serviceKey = null);
-
-        bool TryGetService(Type serviceType, out object? service, long? serviceKey = null);
-
-        bool Exists<TService>(long? serviceKey = null);
-
-        bool Exists(Type serviceType, long? serviceKey = null);
+        /// <summary>
+        /// 指定されたサービスが存在するか確認します
+        /// </summary>
+        /// <typeparam name="TService">確認するサービスの型</typeparam>
+        /// <returns>サービスが存在している場合は true を、存在しない場合は false を返します</returns>
+        bool Exists<TService>()
+            where TService : class;
     }
 }
