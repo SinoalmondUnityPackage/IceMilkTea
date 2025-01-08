@@ -1,0 +1,12 @@
+{
+  "name": "jp.foxtamp.icemilktea",
+  "version": "1.0.0",
+  "displayName": "IceMilkTea",
+  "description": "This package provides Game develop support.",
+  "unity": "6000.0",
+  "category": "GameFramework",
+  "author": "Sinoa <sinoans@gmail.com> (https://github.com/Sinoa/IceMilkTea)",
+  "license": "Zlib",
+  "dependencies": {
+  }
+}
