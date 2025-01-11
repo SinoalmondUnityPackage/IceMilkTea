@@ -23,7 +23,7 @@
 
 namespace Foxtamp.IceMilkTea
 {
-    public class GameMain
+    public class ImtGameMain
     {
     }
 }
