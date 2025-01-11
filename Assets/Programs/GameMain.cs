@@ -22,16 +22,15 @@
 // distribution.
 
 using Foxtamp.IceMilkTea;
-using UnityEngine;
 
 namespace Programs
 {
-    internal class GameMain
+    internal class GameMain : ImtGameMain
     {
         [GameMainEntryPoint]
         private static void Main()
         {
-            Debug.Log("GameMain.Main");
+            new GameMain().Run();
         }
     }
 }

@@ -23,7 +23,17 @@
 
 namespace Foxtamp.IceMilkTea
 {
-    public class ImtGameMain
+    /// <summary>
+    /// ゲームメインクラスの実装をするための抽象クラスです。
+    /// IceMilkTea によるゲームのスタートアップからメインループを構築する場合は必ず継承し実装をして下さい。
+    /// </summary>
+    public abstract class ImtGameMain
     {
+        /// <summary>
+        /// ゲームメインを起動します
+        /// </summary>
+        protected void Run()
+        {
+        }
     }
 }
