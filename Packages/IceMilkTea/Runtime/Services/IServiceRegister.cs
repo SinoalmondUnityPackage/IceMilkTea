@@ -23,7 +23,7 @@
 
 using System;
 
-namespace Foxtamp.IceMilkTea.ServiceManager
+namespace Foxtamp.IceMilkTea.Services
 {
     /// <summary>
     /// ServiceManager にサービスを登録する機能を提供するインターフェイスです
@@ -43,7 +43,7 @@ namespace Foxtamp.IceMilkTea.ServiceManager
         /// </summary>
         /// <typeparam name="TService">登録するサービスの型</typeparam>
         /// <returns>現在の IServiceRegister の参照を返します</returns>
-        /// <exception cref="ServiceRegisteredAlreadyException">型'TService'は、既に登録済みです。</exception>
+        /// <exception cref="ServiceTypeAlreadyRegisteredException">型'TService'は、既に登録済みです。</exception>
         IServiceRegister Register<TService>()
             where TService : class;
 
@@ -53,7 +53,7 @@ namespace Foxtamp.IceMilkTea.ServiceManager
         /// <typeparam name="TService">登録するサービスの型</typeparam>
         /// <param name="service">登録するサービスのインスタンス</param>
         /// <returns>現在の IServiceRegister の参照を返します</returns>
-        /// <exception cref="ServiceRegisteredAlreadyException">型'TService'は、既に登録済みです。</exception>
+        /// <exception cref="ServiceTypeAlreadyRegisteredException">型'TService'は、既に登録済みです。</exception>
         /// <exception cref="ArgumentNullException">service が null です。</exception>
         IServiceRegister Register<TService>(TService service)
             where TService : class;
@@ -64,7 +64,7 @@ namespace Foxtamp.IceMilkTea.ServiceManager
         /// <typeparam name="TService">登録するサービスの型</typeparam>
         /// <param name="serviceFactory">登録するサービスのファクトリ</param>
         /// <returns>現在の IServiceRegister の参照を返します</returns>
-        /// <exception cref="ServiceRegisteredAlreadyException">型'TService'は、既に登録済みです。</exception>
+        /// <exception cref="ServiceTypeAlreadyRegisteredException">型'TService'は、既に登録済みです。</exception>
         /// <exception cref="ArgumentNullException">serviceFactory が null です。</exception>
         IServiceRegister Register<TService>(Func<IServiceProvider, TService> serviceFactory)
             where TService : class;
@@ -75,7 +75,7 @@ namespace Foxtamp.IceMilkTea.ServiceManager
         /// <typeparam name="TKey">登録するサービスのキーとなる型</typeparam>
         /// <typeparam name="TService">登録するサービスの型</typeparam>
         /// <returns>現在の IServiceRegister の参照を返します</returns>
-        /// <exception cref="ServiceRegisteredAlreadyException">型'TKey'は、既に登録済みです。</exception>
+        /// <exception cref="ServiceTypeAlreadyRegisteredException">型'TKey'は、既に登録済みです。</exception>
         IServiceRegister Register<TKey, TService>()
             where TKey : class
             where TService : class, TKey;
@@ -87,7 +87,7 @@ namespace Foxtamp.IceMilkTea.ServiceManager
         /// <typeparam name="TService">登録するサービスの型</typeparam>
         /// <param name="service">登録するサービスのインスタンス</param>
         /// <returns>現在の IServiceRegister の参照を返します</returns>
-        /// <exception cref="ServiceRegisteredAlreadyException">型'TKey'は、既に登録済みです。</exception>
+        /// <exception cref="ServiceTypeAlreadyRegisteredException">型'TKey'は、既に登録済みです。</exception>
         /// <exception cref="ArgumentNullException">service が null です。</exception>
         IServiceRegister Register<TKey, TService>(TService service)
             where TKey : class
@@ -100,7 +100,7 @@ namespace Foxtamp.IceMilkTea.ServiceManager
         /// <typeparam name="TService">登録するサービスの型</typeparam>
         /// <param name="serviceFactory">登録するサービスのファクトリ</param>
         /// <returns>現在の IServiceRegister の参照を返します</returns>
-        /// <exception cref="ServiceRegisteredAlreadyException">型'TKey'は、既に登録済みです。</exception>
+        /// <exception cref="ServiceTypeAlreadyRegisteredException">型'TKey'は、既に登録済みです。</exception>
         /// <exception cref="ArgumentNullException">serviceFactory が null です。</exception>
         IServiceRegister Register<TKey, TService>(Func<IServiceProvider, TService> serviceFactory)
             where TKey : class
