@@ -43,7 +43,7 @@ namespace Foxtamp.IceMilkTea.Extensions
         /// <exception cref="GameServiceNotFoundException">サービスの型 'T' が見つかりませんでした</exception>
         public static TKey GetRequiredService<TKey>(this UnityObject unityObject) where TKey : class, IGameService
         {
-            return ImtGameMain.Current.ServiceProvider.GetRequiredService<TKey>();
+            return GameMain.Current.ServiceProvider.GetRequiredService<TKey>();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Foxtamp.IceMilkTea.Extensions
         /// <exception cref="ObjectDisposedException">このサービスマネージャが破棄されたか不正な状態です</exception>
         public static TKey? GetService<TKey>(this UnityObject unityObject) where TKey : class, IGameService
         {
-            return ImtGameMain.Current.ServiceProvider.GetService<TKey>();
+            return GameMain.Current.ServiceProvider.GetService<TKey>();
         }
     }
 }

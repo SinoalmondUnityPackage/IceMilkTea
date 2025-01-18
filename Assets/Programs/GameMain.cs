@@ -25,7 +25,7 @@ using Foxtamp.IceMilkTea;
 
 namespace Programs
 {
-    internal class GameMain : ImtGameMain
+    internal class GameMain : Foxtamp.IceMilkTea.GameMain
     {
         [GameMainEntryPoint]
         private static void Main()

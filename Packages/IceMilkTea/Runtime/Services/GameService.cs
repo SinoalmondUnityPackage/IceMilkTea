@@ -21,6 +21,10 @@
 // 3. This notice may not be removed or altered from any source
 // distribution.
 
+#nullable enable
+
+using System;
+
 namespace Foxtamp.IceMilkTea.Services
 {
     /// <summary>
@@ -54,6 +58,29 @@ namespace Foxtamp.IceMilkTea.Services
         /// </summary>
         protected virtual void Shutdown()
         {
+        }
+
+        /// <summary>
+        /// 指定された型のサービスを取得します
+        /// </summary>
+        /// <typeparam name="TKey">取得するサービスのキー型</typeparam>
+        /// <returns>サービスを取得できた場合は参照を返します</returns>
+        /// <exception cref="ObjectDisposedException">このサービスマネージャが破棄されたか不正な状態です</exception>
+        /// <exception cref="GameServiceNotFoundException">サービスの型 'T' が見つかりませんでした</exception>
+        protected TKey GetRequiredService<TKey>() where TKey : class, IGameService
+        {
+            return GameMain.Current.ServiceProvider.GetRequiredService<TKey>();
+        }
+
+        /// <summary>
+        /// 指定された型のサービスを取得します
+        /// </summary>
+        /// <typeparam name="T">取得するサービスの型</typeparam>
+        /// <returns>サービスを取得できた場合は参照を返しますが、取得できなかった場合は null を返します</returns>
+        /// <exception cref="ObjectDisposedException">このサービスマネージャが破棄されたか不正な状態です</exception>
+        protected TKey? GetService<TKey>() where TKey : class, IGameService
+        {
+            return GameMain.Current.ServiceProvider.GetService<TKey>();
         }
     }
 }

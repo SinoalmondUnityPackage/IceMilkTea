@@ -29,12 +29,12 @@ namespace Foxtamp.IceMilkTea
     /// ゲームメインクラスの実装をするための抽象クラスです。
     /// IceMilkTea によるゲームのスタートアップからメインループを構築する場合は必ず継承し実装をして下さい。
     /// </summary>
-    public abstract class ImtGameMain
+    public abstract class GameMain
     {
         /// <summary>
         /// ゲームメインの現在のインスタンスを取得します
         /// </summary>
-        public static ImtGameMain Current { get; }
+        public static GameMain Current { get; }
 
         /// <summary>
         /// ゲームメインのサービスプロバイダを取得します
