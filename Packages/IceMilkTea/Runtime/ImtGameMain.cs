@@ -21,6 +21,8 @@
 // 3. This notice may not be removed or altered from any source
 // distribution.
 
+using Foxtamp.IceMilkTea.Services;
+
 namespace Foxtamp.IceMilkTea
 {
     /// <summary>
@@ -29,6 +31,16 @@ namespace Foxtamp.IceMilkTea
     /// </summary>
     public abstract class ImtGameMain
     {
+        /// <summary>
+        /// ゲームメインの現在のインスタンスを取得します
+        /// </summary>
+        public static ImtGameMain Current { get; }
+
+        /// <summary>
+        /// ゲームメインのサービスプロバイダを取得します
+        /// </summary>
+        public IGameServiceProvider ServiceProvider { get; }
+
         /// <summary>
         /// ゲームメインを起動します
         /// </summary>
