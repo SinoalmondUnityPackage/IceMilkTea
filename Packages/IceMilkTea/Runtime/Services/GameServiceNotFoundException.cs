@@ -28,7 +28,7 @@ namespace Foxtamp.IceMilkTea.Services
     /// <summary>
     /// サービスが見つからなかった場合にスローされる例外です
     /// </summary>
-    public class ServiceNotFoundException : Exception
+    public class GameServiceNotFoundException : Exception
     {
         /// <summary>
         /// 見つけられなかったサービスの型を取得します
@@ -39,7 +39,7 @@ namespace Foxtamp.IceMilkTea.Services
         /// ServiceNotFoundException のインスタンスを初期化します
         /// </summary>
         /// <param name="serviceType">見つからなかったサービスの型</param>
-        public ServiceNotFoundException(Type serviceType) : base($"Service of type '{serviceType.FullName}' not found.")
+        public GameServiceNotFoundException(Type serviceType) : base($"Service of type '{serviceType.FullName}' not found.")
         {
             ServiceType = serviceType;
         }

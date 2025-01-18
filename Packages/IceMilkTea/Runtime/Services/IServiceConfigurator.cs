@@ -26,29 +26,15 @@ using System;
 namespace Foxtamp.IceMilkTea.Services
 {
     /// <summary>
-    /// サービスの型が既に登録されている場合にスローされる例外です
+    /// ゲームサービスの設定を行うためのインターフェイスです
     /// </summary>
-    public class ServiceTypeAlreadyRegisteredException : Exception
+    public interface IServiceConfigurator
     {
         /// <summary>
-        /// 既に登録されているサービスのキー型を取得します
+        /// ゲームサービスの更新関数を設定します
         /// </summary>
-        public Type KeyType { get; }
-
-        /// <summary>
-        /// 既に登録されているサービスの型を取得します
-        /// </summary>
-        public Type ServiceType { get; }
-
-        /// <summary>
-        /// ServiceTypeAlreadyRegisteredException のインスタンスを初期化します
-        /// </summary>
-        /// <param name="keyType">登録済みサービスのキー型</param>
-        /// <param name="serviceType">登録済みサービスの型</param>
-        public ServiceTypeAlreadyRegisteredException(Type keyType, Type serviceType) : base($"Service of type '{serviceType.FullName}' already registered with key type '{keyType.FullName}'.")
-        {
-            KeyType = keyType;
-            ServiceType = serviceType;
-        }
+        /// <param name="updateTiming">サービスの更新タイミング</param>
+        /// <param name="updateFunction">設定するサービスの更新関数</param>
+        void SetUpdateFunction(GameServiceUpdateTiming updateTiming, Action updateFunction);
     }
 }

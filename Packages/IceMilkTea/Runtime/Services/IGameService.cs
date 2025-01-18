@@ -24,17 +24,15 @@
 namespace Foxtamp.IceMilkTea.Services
 {
     /// <summary>
-    /// IceMilkTea定義上のゲームサービスのインターフェイスです
+    /// ゲームサービスのインターフェイスです
     /// </summary>
-    /// <remarks>
-    /// サービスクラスはこのインターフェイスを実装する必要はありませんがIceMilkTeaのサービスマネージャの支援を受けるには実装をしてください
-    /// </remarks>
     public interface IGameService
     {
         /// <summary>
         /// ゲームサービスの起動処理を行います
         /// </summary>
-        void Startup();
+        /// <param name="configurator">ゲームサービスの動作を設定するコンフィギュレーター</param>
+        void Startup(IServiceConfigurator configurator);
 
         /// <summary>
         /// ゲームサービスの終了処理を行います
